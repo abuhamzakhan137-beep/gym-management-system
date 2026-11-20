@@ -1,5 +1,4 @@
-const API = localStorage.getItem("fitflow_api") || "http://127.0.0.1:8000";
-let token = localStorage.getItem("fitflow_token") || "";
+const API = "https://gym-management-system-ehl4.onrender.com";let token = localStorage.getItem("fitflow_token") || "";
 let currentPage = "dashboard";
 const $ = s => document.querySelector(s);
 const money = n => "₹" + Number(n||0).toLocaleString("en-IN");
