@@ -1,4 +1,4 @@
-const API = "https://gym-management-system-ehl4.onrender.com";let token = localStorage.getItem("fitflow_token") || "";
+const API = "https://gym-management-system-ehl4.onrender.com";
 let currentPage = "dashboard";
 const $ = s => document.querySelector(s);
 const money = n => "₹" + Number(n||0).toLocaleString("en-IN");

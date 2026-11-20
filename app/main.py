@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,6 +12,17 @@ async def lifespan(app: FastAPI):
     yield
 
 app=FastAPI(title=settings.APP_NAME,version="1.0.0",description="Full-stack gym operations management API",lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://young-heart-f463.abuhamzakhan137.workers.dev",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.add_middleware(CORSMiddleware,allow_origins=settings.CORS_ORIGINS if settings.CORS_ORIGINS != ["*"] else ["*"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
 
 for router in [auth.router,members.router,trainers.router,memberships.router,payments.router,attendance.router,fitness.router,dashboard.router]:
